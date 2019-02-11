@@ -1,4 +1,4 @@
-# [Odoo](https://www.odoo.com "Odoo's Homepage") v12 installation script
+# [Odoo](https://www.odoo.com/documentation/12.0/setup/install.html#source-install "Odoo's Docs") v12 installation script
 ##### Tested on Ubuntu 18.04 (Bionic beaver) and Debian 9 (Stretch)
 
 Script is based on https://github.com/Yenthe666/InstallScript but remastered and added couple features that I was missing in original one.
