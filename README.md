@@ -56,7 +56,7 @@ sudo ./odoo_install.sh
 ```
 cat odoo-install-log.txt | less
 ```
-### 6. Update Odoo config file to connect to Postgresql host or adjsut other options
+#### 6. Update Odoo config file to connect to Postgresql host or adjsut other options
 ```
 sudo vi /etc/odoo/odoo-server.conf
 ```
