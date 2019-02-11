@@ -43,7 +43,7 @@ OE_CONFIG="${OE_USER}-server"
 ###############################################################################
 # Redirect stdout ( > ) into a named pipe ( >() ) running "tee"
 # file logfile.tx will be created with stdout and sdterr messages
-exec > >(tee -i logfile.txt)
+exec > >(tee -i odoo-install-log.txt)
 exec 2>&1
 ###############################################################################
 
