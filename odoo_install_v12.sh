@@ -408,7 +408,7 @@ echo -e "Systemd is Starting Odoo Service"
 systemctl start odoo-server.service
 
 echo -ne "\n${green}-----------------------------------------------------------${reset}\n"
-echo -e "${green}Done! The Odoo server is up and running. Specifications:${reset}\n"
+echo -e "${green}Done! The Odoo server is up and running. Specifications:${reset}\n\n"
 echo -e "${green}Port: $OE_PORT ${reset}"
 echo -e "${green}User service: $OE_USER ${reset}"
 echo -e "${green}User PostgreSQL: $OE_USER ${reset}"
