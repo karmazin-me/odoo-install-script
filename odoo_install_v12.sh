@@ -155,8 +155,8 @@ read -t 30 -e -p "${yellow}Do you want to add custom directories? (y/n): ${reset
 
 case ${DIR_ANSWER:0:1} in
         [yY] )
-                echo -ne "\n ${green} Custom derictories selection. Default is: $OE_HOME/custom/addons ${reset}\n"
-                read -e -p "${yellow}Enter full path to dirs (separate multiple paths by a single space)${reset}:" -i "$OE_HOME/theme " ADD_DIR_PATH
+                echo -ne "\n ${green} Custom derictories selection. Default is: $OE_HOME/custom/addons ${reset}\n\n"
+                read -e -p "${yellow}Enter full path to dirs (separate multiple paths by a single space)${reset}:" -i "$OE_HOME/themes " ADD_DIR_PATH
                 ;;
         * )
                 echo -ne "\n ${red} OK, default one at $OE_HOME/custom/addons will be created ${reset}\n\n"
@@ -309,9 +309,10 @@ if ${IS_ENTERPRISE}; then
     echo -ne "\n${green}---- Added Enterprise code under $OE_HOME/enterprise/addons ---- ${reset}\n"
     echo -ne "\n${green}---- Installing Enterprise specific libraries ---- ${reset}\n"
     pip3 install num2words ofxparse
+    curl -sL https://deb.nodesource.com/setup_10.x | bash -
     apt-get -qq install nodejs npm
     npm install -g less
-		npm install -g rtlcss
+	npm install -g rtlcss
     npm install -g less-plugin-clean-css
 fi
 
@@ -341,11 +342,11 @@ touch /etc/odoo/${OE_CONFIG}.conf
 echo -ne "${green} Creating server config file"
 su root -c "printf '[options] \n; This is the password that allows database operations:\n' >> /etc/odoo/${OE_CONFIG}.conf"
 
-su root -c "printf ';db_host = \n' > /etc/odoo/${OE_CONFIG}.conf"
-su root -c "printf ';db_user = \n' > /etc/odoo/${OE_CONFIG}.conf"
-su root -c "printf ';db_password = \n' > /etc/odoo/${OE_CONFIG}.conf"
-su root -c "printf 'db_port = 5432\n' > /etc/odoo/${OE_CONFIG}.conf"
-su root -c "printf ';db_sslmode = prefer' > /etc/odoo/${OE_CONFIG}.conf"
+su root -c "printf ';db_host = \n' >> /etc/odoo/${OE_CONFIG}.conf"
+su root -c "printf ';db_user = \n' >> /etc/odoo/${OE_CONFIG}.conf"
+su root -c "printf ';db_password = \n' >> /etc/odoo/${OE_CONFIG}.conf"
+su root -c "printf 'db_port = 5432\n' >> /etc/odoo/${OE_CONFIG}.conf"
+su root -c "printf ';db_sslmode = prefer' >> /etc/odoo/${OE_CONFIG}.conf"
 su root -c "printf 'admin_passwd = ${OE_SUPERADMIN}\n' >> /etc/odoo/${OE_CONFIG}.conf"
 su root -c "printf 'xmlrpc_port = ${OE_PORT}\n' >> /etc/odoo/${OE_CONFIG}.conf"
 
@@ -364,8 +365,8 @@ else
       su root -c "printf 'addons_path=${OE_HOME_EXT}/addons,${OE_HOME}/custom/addons,${ADD_DIR_PATH// /,}\n' >> /etc/odoo/${OE_CONFIG}.conf"
     else
       su root -c "printf 'addons_path=${OE_HOME_EXT}/addons,${OE_HOME}/custom/addons\n' >> /etc/odoo/${OE_CONFIG}.conf"
+    fi
 fi
-
 chown ${OE_USER}:${OE_USER} /etc/${OE_CONFIG}.conf
 chmod 640 /etc/${OE_CONFIG}.conf
 
