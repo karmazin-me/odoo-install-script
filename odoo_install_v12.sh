@@ -5,7 +5,7 @@
 # ekarmazin@b2bsoft.com
 
 # Odoo Enterprise installation script based on idea of
-# https://github.com/Yenthe666/InstallScript/blob/10.0/odoo_install.sh
+# https://github.com/Yenthe666/InstallScript/blob/12.0/odoo_install.sh
 # Optimized for Systemd on Ubuntu 18.04 and Debian Stretch
 
 ###############################################################################
@@ -28,7 +28,7 @@ OE_PORT="8069"
 
 # Choose the Odoo version which you want to install. For example: 12.0, 11.0, 10.0 or saas-18. When using 'master' the master version will be installed.
 # IMPORTANT! This script contains extra libraries that are specifically needed for Odoo 12.0
-OE_VERSION="10.0"
+OE_VERSION="12.0"
 
 # Name of the config file. Default is suggested.
 OE_CONFIG="${OE_USER}-server"
@@ -37,8 +37,6 @@ OE_CONFIG="${OE_USER}-server"
 #### All set. Stop editing here. Save and run the script with sudo ############
 ###############################################################################
 
-#Python env
-OE_PYTHON_ENV="${OE_HOME}/python_env"
 
 ### DO NOT EDIT THE SCRIPT BEHIND THIS LINE, LET MAGIC TO DO THE JOB FOR YOU ##
 ###############################################################################
@@ -238,7 +236,7 @@ apt-get -qq install libxml2-dev libxslt1-dev zlib1g-dev
 apt-get -qq install libsasl2-dev libldap2-dev libssl-dev
 
 # Install official recommendations.txt from here: https://raw.githubusercontent.com/odoo/odoo/12.0/requirements.txt
-curl -O https://raw.githubusercontent.com/odoo/odoo/10.0/requirements.txt;
+curl -O https://raw.githubusercontent.com/odoo/odoo/12.0/requirements.txt;
 pip3 install -q --no-cache-dir -r requirements.txt
 
 # Add rest python modules widely used
