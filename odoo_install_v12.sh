@@ -235,9 +235,13 @@ apt-get -qq install wget git bzr python-pip gdebi-core ca-certificates curl dirm
 echo -ne "\n${green}---- Install python packages ----${reset}\n\n"
 apt-get -qq install libxml2-dev libxslt1-dev zlib1g-dev
 apt-get -qq install libsasl2-dev libldap2-dev libssl-dev
-apt-get -qq install python-dateutil python-feedparser python-ldap python-libxslt1 python-lxml python-mako python-openid python-psycopg2 python-pychart python-pydot python-pyparsing python-reportlab python-simplejson python-tz python-vatnumber python-vobject python-webdav python-werkzeug python-xlwt python-yaml python-zsi python-docutils python-psutil python-mock python-unittest2 python-jinja2 python-decorator python-requests python-passlib python-pil
 
-pip3 install pypdf2 Babel passlib Werkzeug decorator python-dateutil pyyaml psycopg2 psutil html2text docutils lxml pillow reportlab ninja2 requests gdata XlsxWriter vobject python-openid pyparsing pydot mock mako Jinja2 ebaysdk feedparser xlwt psycogreen suds-jurko pytz pyusb greenlet xlrd chardet libsass pysftp paramiko -q
+# Install official recommendations.txt from here: https://raw.githubusercontent.com/odoo/odoo/12.0/requirements.txt
+curl -O https://raw.githubusercontent.com/odoo/odoo/12.0/requirements.txt;
+pip3 install -q --no-cache-dir -r requirements.txt
+
+# Add rest python modules widely used
+pip3 install gdata ninja2 paramik psycogreen pysftp python-openid pyyaml python-libxslt1 python-pil python-pychart python-simplejson python-tz python-unittest2 python3-suds python-webdav python-yamls python-zsis -q
 
 echo -ne "\n${green}---- Install python libraries ----${reset}\n\n"
 # This is for compatibility with Ubuntu 16.04. Will work on 14.04, 15.04 and 16.04
