@@ -37,7 +37,6 @@ OE_CONFIG="${OE_USER}-server"
 #### All set. Stop editing here. Save and run the script with sudo ############
 ###############################################################################
 
-
 ### DO NOT EDIT THE SCRIPT BEHIND THIS LINE, LET MAGIC TO DO THE JOB FOR YOU ##
 ###############################################################################
 # Redirect stdout ( > ) into a named pipe ( >() ) running "tee"
@@ -224,9 +223,10 @@ fi
 #--------------------------------------------------
 # Install Dependencies
 #--------------------------------------------------
-echo -ne "\n${green}--- Installing Python 2 + pip --${reset}\n\n"
+echo -ne "\n${green}--- Installing Python + pip --${reset}\n\n"
 apt-get -qq update ;
 apt-get -qq install ibjpeg-dev curl wget git python-pip gdebi-core python-dev libxml2-dev libxslt1-dev zlib1g-dev libldap2-dev libsasl2-dev node-clean-css node-less python-gevent
+apt-get -qq install python3 python3-pip
 
 echo -ne "\n${green}---- Install tool packages ----${reset}\n\n"
 apt-get -qq install wget git bzr python-pip gdebi-core ca-certificates curl dirmngr fonts-noto-cjk gnupg libssl1.0-dev xz-utils
@@ -237,7 +237,7 @@ apt-get -qq install libsasl2-dev libldap2-dev libssl-dev
 
 # Install official recommendations.txt from here: https://raw.githubusercontent.com/odoo/odoo/12.0/requirements.txt
 curl -O https://raw.githubusercontent.com/odoo/odoo/12.0/requirements.txt;
-pip3 install -q --no-cache-dir -r requirements.txt
+pip3 install -q -r requirements.txt
 
 # Add rest python modules widely used
 apt-get -qq install python-openid python-libxslt1 python-pil python-pychart python3-suds python-yaml python-zsi python-webdav
