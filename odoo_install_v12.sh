@@ -4,7 +4,7 @@
 # Author Eugene Karmazin
 # ekarmazin@b2bsoft.com
 
-# Odoo Enterprise isntallation script based on idea of
+# Odoo Enterprise installation script based on idea of
 # https://github.com/Yenthe666/InstallScript/blob/12.0/odoo_install.sh
 # Optimized for Systemd on Ubuntu 18.04 and Debian Stretch
 
@@ -203,13 +203,13 @@ apt-get -qq upgrade
 # Install PostgreSQL Server
 #--------------------------------------------------
 if ${INSTALL_POSTGRES}; then
-  echo -ne "\n${green}---- Install PostgreSQL Server ---- ${reset}\n"
+  echo -ne "\n${green}---- Install PostgreSQL Server ---- ${reset}\n\n"
   apt-get -qq install postgresql
-  echo -ne "\n${green}---- Creating the ODOO PostgreSQL User  ---- ${reset}\n"
+  echo -ne "\n${green}---- Creating the ODOO PostgreSQL User  ---- ${reset}\n\n"
   su - postgres -c "createuser -s $OE_USER" 2> /dev/null || true
 else
 # Install latest postgresql-client
-  echo -ne "\n${green}---- Installing PostgreSQL Client---- ${reset}\n"
+  echo -ne "\n${green}---- Installing PostgreSQL Client---- ${reset}\n\n"
   touch /etc/apt/sources.list.d/pgdg.list
   bash -c 'echo '\''deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main'\'' > /etc/apt/sources.list.d/pgdg.list'
   export GNUPGHOME="$(mktemp -d)"
@@ -218,10 +218,8 @@ else
   gpg --armor --export "${repokey}" | apt-key add -
   gpgconf --kill all
   rm -rf "$GNUPGHOME"
-  apt-get -qq update ;
+  apt-get -qq update;
   apt-get -qq install  postgresql-client
-  # Clean up
-  rm -rf /var/lib/apt/lists/*
 fi
 
 #--------------------------------------------------
@@ -399,7 +397,7 @@ EOF
 
 mv ~/${OE_CONFIG} /lib/systemd/system/${OE_CONFIG}.service
 ln -s  /system/multi-user.target.wants/${OE_CONFIG}.service /etc/systemd/system/multi-user.target.wants/${OE_CONFIG}.service
-chmod 600 /lib/systemd/system/${OE_CONFIG}.service
+chmod 644 /lib/systemd/system/${OE_CONFIG}.service
 chown root:root /lib/systemd/system/${OE_CONFIG}.service
 
 echo -e "* Start ODOO on Startup"
