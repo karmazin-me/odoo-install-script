@@ -5,7 +5,7 @@
 # ekarmazin@b2bsoft.com
 
 # Odoo Enterprise installation script based on idea of
-# https://github.com/Yenthe666/InstallScript/blob/12.0/odoo_install.sh
+# https://github.com/Yenthe666/InstallScript/blob/10.0/odoo_install.sh
 # Optimized for Systemd on Ubuntu 18.04 and Debian Stretch
 
 ###############################################################################
@@ -28,7 +28,7 @@ OE_PORT="8069"
 
 # Choose the Odoo version which you want to install. For example: 12.0, 11.0, 10.0 or saas-18. When using 'master' the master version will be installed.
 # IMPORTANT! This script contains extra libraries that are specifically needed for Odoo 12.0
-OE_VERSION="12.0"
+OE_VERSION="10.0"
 
 # Name of the config file. Default is suggested.
 OE_CONFIG="${OE_USER}-server"
@@ -36,6 +36,9 @@ OE_CONFIG="${OE_USER}-server"
 ###############################################################################
 #### All set. Stop editing here. Save and run the script with sudo ############
 ###############################################################################
+
+#Python env
+OE_PYTHON_ENV="${OE_HOME}/python_env"
 
 ### DO NOT EDIT THE SCRIPT BEHIND THIS LINE, LET MAGIC TO DO THE JOB FOR YOU ##
 ###############################################################################
@@ -226,7 +229,7 @@ fi
 echo -ne "\n${green}--- Installing Python + pip --${reset}\n\n"
 apt-get -qq update ;
 apt-get -qq install ibjpeg-dev curl wget git python-pip gdebi-core python-dev libxml2-dev libxslt1-dev zlib1g-dev libldap2-dev libsasl2-dev node-clean-css node-less python-gevent
-apt-get -qq install python3 python3-pip
+apt-get -qq install python python-pip
 
 echo -ne "\n${green}---- Install tool packages ----${reset}\n\n"
 apt-get -qq install wget git bzr python-pip gdebi-core ca-certificates curl dirmngr fonts-noto-cjk gnupg libssl1.0-dev xz-utils
@@ -236,12 +239,12 @@ apt-get -qq install libxml2-dev libxslt1-dev zlib1g-dev
 apt-get -qq install libsasl2-dev libldap2-dev libssl-dev
 
 # Install official recommendations.txt from here: https://raw.githubusercontent.com/odoo/odoo/12.0/requirements.txt
-curl -O https://raw.githubusercontent.com/odoo/odoo/12.0/requirements.txt;
-pip3 install -q -r requirements.txt
+curl -O https://raw.githubusercontent.com/odoo/odoo/10.0/requirements.txt;
+pip install -q -r requirements.txt
 
 # Add rest python modules widely used
-apt-get -qq install python-openid python-libxslt1 python-pil python-pychart python3-suds python-yaml python-zsi python-webdav
-pip3 install gdata ninja2 paramiko psycogreen pysftp pyyaml simplejson tz unittest2 -q
+apt-get -qq install python-openid python-libxslt1 python-pil python-pychart python-suds python-yaml python-zsi python-webdav python-tz
+pip install gdata ninja2 paramiko psycogreen pysftp pyyaml simplejson unittest2 -q
 
 echo -ne "\n${green}---- Install python libraries ----${reset}\n\n"
 
@@ -249,7 +252,6 @@ echo -ne "\n${green}--- Install other required packages ----${reset}\n\n"
 apt-get -qq install node-clean-css
 apt-get -qq install node-less
 apt-get -qq install python-gevent
-
 
 
 #--------------------------------------------------
