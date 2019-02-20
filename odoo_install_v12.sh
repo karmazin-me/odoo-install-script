@@ -217,7 +217,7 @@ else
   gpgconf --kill all
   rm -rf "$GNUPGHOME"
   apt-get -qq update;
-  apt-get -qq install  postgresql-client
+  apt-get -qq install  postgresql-client-10
 fi
 
 #--------------------------------------------------
@@ -225,7 +225,7 @@ fi
 #--------------------------------------------------
 echo -ne "\n${green}--- Installing Python + pip --${reset}\n\n"
 apt-get -qq update ;
-apt-get -qq install ibjpeg-dev curl wget git python-pip gdebi-core python-dev libxml2-dev libxslt1-dev zlib1g-dev libldap2-dev libsasl2-dev node-clean-css node-less python-gevent
+apt-get -qq install ibjpeg-dev curl wget git python-pip gdebi-core python-dev libxml2-dev libxslt1-dev zlib1g-dev libldap2-dev libsasl2-dev node-clean-css node-less python-gevent unzip
 apt-get -qq install python3 python3-pip
 
 echo -ne "\n${green}---- Install tool packages ----${reset}\n\n"
