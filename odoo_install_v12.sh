@@ -217,7 +217,7 @@ else
   gpgconf --kill all
   rm -rf "$GNUPGHOME"
   apt-get -qq update;
-  apt-get -qq install  postgresql-client-10
+  apt-get -qq install  postgresql-client
 fi
 
 #--------------------------------------------------
@@ -241,7 +241,7 @@ pip3 install -q -r requirements.txt
 
 # Add rest python modules widely used
 apt-get -qq install python-openid python-libxslt1 python-pil python-pychart python3-suds python-yaml python-zsi python-webdav
-pip3 install gdata ninja2 paramiko psycogreen pysftp pyyaml simplejson tz unittest2 -q
+pip3 install gdata ninja2 paramiko psycogreen pysftp pyyaml simplejson tz unittest2 nameparser -q
 
 echo -ne "\n${green}---- Install python libraries ----${reset}\n\n"
 
