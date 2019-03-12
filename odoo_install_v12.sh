@@ -217,7 +217,7 @@ else
   gpgconf --kill all
   rm -rf "$GNUPGHOME"
   apt-get -qq update;
-  apt-get -qq install  postgresql-client
+  apt-get -qq install --allow-unauthenticated postgresql-client 
 fi
 
 #--------------------------------------------------
