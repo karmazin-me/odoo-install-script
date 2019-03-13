@@ -9,7 +9,7 @@ Script is based on https://github.com/Yenthe666/InstallScript but remastered and
 - Ability to add custom folders for modules, themes, etc
 - Remastered to work with SystemD instead of SystemV
 - OS flavor autodetect (Ubuntu or Debian but not the release number)
-- Colored output in stdout
+- Colored output in the stdout
 - Additional python3 modules added 
 
 ## How to use
@@ -19,7 +19,7 @@ Script is based on https://github.com/Yenthe666/InstallScript but remastered and
 wget  https://raw.githubusercontent.com/Yenthe666/InstallScript/12.0/odoo_install.sh
 ```
 or see releases for .tar or .zip sources
-##### 2. Carfully modify parameters at the top section.
+##### 2. Carefully modify parameters at the top section.
 ```
 # User to run Odoo Server
 OE_USER="odoo"
