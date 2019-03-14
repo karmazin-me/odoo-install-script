@@ -346,7 +346,7 @@ su root -c "printf ';db_host = \n' >> /etc/odoo/${OE_CONFIG}.conf"
 su root -c "printf ';db_user = \n' >> /etc/odoo/${OE_CONFIG}.conf"
 su root -c "printf ';db_password = \n' >> /etc/odoo/${OE_CONFIG}.conf"
 su root -c "printf 'db_port = 5432\n' >> /etc/odoo/${OE_CONFIG}.conf"
-su root -c "printf ';db_sslmode = prefer' >> /etc/odoo/${OE_CONFIG}.conf"
+su root -c "printf ';db_sslmode = prefer\n' >> /etc/odoo/${OE_CONFIG}.conf"
 su root -c "printf 'admin_passwd = ${OE_SUPERADMIN}\n' >> /etc/odoo/${OE_CONFIG}.conf"
 su root -c "printf 'xmlrpc_port = ${OE_PORT}\n' >> /etc/odoo/${OE_CONFIG}.conf"
 
